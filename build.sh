@@ -1,7 +1,6 @@
 #!/bin/bash
 
-
-BRANCH=${BRANCH_NAME}
+BRANCH=$1
 
 if [ "$BRANCH" == "main" ]; then
     REPO_NAME="mythili121/devops-build-prod"
@@ -14,8 +13,7 @@ fi
 
 echo "Building Docker image for branch: $BRANCH"
 docker build -t $REPO_NAME:$BRANCH .
-
 echo "Pushing image to Docker Hub repository: $REPO_NAME"
 docker push $REPO_NAME:$BRANCH
-
 echo "Docker image build and push complete."
+
